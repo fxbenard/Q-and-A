@@ -66,6 +66,12 @@ if ( isset($_GET['settings-updated'])) {
 // set up some defaults if these fields are empty
 ?>
 	<div class="wrap">
+
+	<div class="updated fade" style="max-width: 780px; margin: 18px 0 0 18px">
+    <p style="line-height: 1.4em;"><?php _e ('Thanks for downloading Q & A! If you like it, please be sure to give us a positive rating in the <a href="http://wordpress.org/extend/plugins/q-and-a/">WordPress repository</a>, it means a lot to us.', 'port_slide'); ?></p>
+  	<p style="line-height: 1.4em;"><?php _e ('If you like Q & A and would like more advanced features, please take a look at <strong><a href="http://madebyraygun.com/wordpress/plugins/q-and-a-plus">Q & A Plus</a></strong>, our premium version of the plugin. It\'s got more display options, support for user submissions, user ratings, and even more options to explore.', 'port_slide'); ?></p>
+  </div>
+
 	<div id="tabs">
 		<ul>
 			<li><a id="tab-anchor-1" class="tab-anchor" href="#tabs-1">Plugin Settings</a></li>
@@ -277,7 +283,7 @@ function q_a_plus_search_input() {
 
 	<select name="qaplus_options[search]" value="<?php echo $qaplus_options[search]; ?>" />
 		<option value="home" <?php if ( $qaplus_options['search'] == "home" ) echo " selected='selected'";?>><?php _e( 'On home page', 'qa_plus');?></option>
-		<option value="categories" <?php if ( $qaplus_options['search'] == "categories" ) echo " selected='selected'";?>><?php _e( 'On category pages', 'qa_plus');?></option>
+		<option value="category" <?php if ( $qaplus_options['search'] == "categories" ) echo " selected='selected'";?>><?php _e( 'On category pages', 'qa_plus');?></option>
 		<option value="both" <?php if ( $qaplus_options['search'] == "both" ) echo " selected='selected'";?>><?php _e( 'Both home and category pages', 'qa_plus');?></option>
 		<option value="none" <?php if ( $qaplus_options['search'] == "none" ) echo " selected='selected'";?>><?php _e( 'Do not enable search', 'qa_plus');?></option>
 	</select>

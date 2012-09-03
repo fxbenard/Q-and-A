@@ -176,7 +176,6 @@ function qahome_shortcode( $atts ) {
 		$qaplus_shortcode_output .= '</div>';
 
 		wp_reset_postdata();
-
 		if ( $searchpos == "bottom" ) { 
 			if ( $search == "category" || $search == "both" ) $qaplus_shortcode_output .= qa_search();
 		}

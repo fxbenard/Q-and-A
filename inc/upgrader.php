@@ -1,5 +1,7 @@
 <?php 
 
+if (is_admin()) require_once(ABSPATH . 'wp-includes/pluggable.php');
+
 $qaplus_options = get_option( 'qaplus_options' );
 $qaplus_admin = get_option( 'qaplus_admin_options' );
 
@@ -48,7 +50,7 @@ if ( ! $qaplus_options) { // Create the defaults for a new installation
 		global $post;
 		add_post_meta($post->ID, 'votes_count', '0', true);
 	endwhile;
-	
+
 } else {  /* Installation already exists, install updates */
 	
 	$qaplus_options['version'] = Q_A_PLUS_VERSION;
