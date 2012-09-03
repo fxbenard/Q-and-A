@@ -1,0 +1,91 @@
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
+.cf {
+    *zoom: 1;
+}
+
+.qa-faqs .left-half, .qa-faqs .right-half {
+	float: left;
+	width: 45%;
+}
+
+.qa-faqs .right-half {
+	margin-left: 5%
+}
+
+.qa-category {
+	margin-bottom: 30px;
+}
+
+.collapsible .qa-faq-answer {
+	display: none;
+}
+
+.open .qa-faq-answer {
+	display: block;
+}
+
+.qa-faq-meta, .expand-all {
+	font-size:90%;
+}
+
+.expand-all.collapse {
+	display: none;
+}
+
+.open .expand-all.expand {
+	display:none;
+}
+
+.open .expand-all.collapse {
+	display: inline-block;
+}
+
+.qa-show-more {
+	display: block;
+	margin: 10px 0 0;
+}
+
+.qa-post-like{ 
+	margin-top:1em;
+}
+
+.qa-post-like a {
+	text-decoration: none;
+}
+
+.qa-voted .qa-rating-helper {
+	display: none;
+}
+
+.qa-like{ 
+	background:url(../img/ratings.png) no-repeat 0 2px; 
+	width: 15px; 
+	height: 16px; 
+	display: inline-block; 
+	margin: 0 3px;
+}
+
+.qa-like:hover {
+	background:url(../img/ratings.png) no-repeat -16px 2px;
+}
+
+.qa-voted .qa-like, .qa-voted .qa-like:hover, .qa-post-like .qa-alreadyvoted{ 
+	background-position:-32px 2px;
+}
+
+.qasubmission {
+	display: block;
+}
+
+.qa-msg.error {
+	color: #b22222;
+}
