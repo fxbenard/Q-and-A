@@ -55,7 +55,9 @@ jQuery(document).ready(function($) {
 	
 	$('#qaplus_searchform').submit(function() {
 		link = $(this).find('#qa_search_link').val();
-		link = link + $(this).find('.qaplus_search').val();
+		query = $(this).find('.qaplus_search').val();
+		query = query.split(' ').join('+');
+		link = link + query;
 		location.href = link;
 		return false;
 	});
