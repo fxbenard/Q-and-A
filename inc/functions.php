@@ -3,13 +3,13 @@
 $qaplus_options = get_option( 'qaplus_options' ); 
 $qaplus_auth = get_option( 'qaplus_auth' ); 
 
+//our custom post functions
+require ( Q_A_PLUS_PATH . 'inc/custom-post.php' );
+
 // If the version numbers don't match, run the upgrade script
 if ( $qaplus_options['version'] < Q_A_PLUS_VERSION ) { 
 	require ( Q_A_PLUS_PATH . 'inc/upgrader.php' );
 }
-
-//our custom post functions
-require ( Q_A_PLUS_PATH . 'inc/custom-post.php' );
 
 //shortcodes
 require ( Q_A_PLUS_PATH . 'inc/shortcodes.php' );
@@ -217,14 +217,14 @@ add_filter('the_title','update_page_title');
 function update_page_title($data){
     global $post, $qaplus_options;
 
-	$catname = (get_query_var('category_name'));
+	$qa_catname = (get_query_var('category_name'));
     
-    if ( !empty($catname)) {
-		$category = get_term_by( 'slug', $catname, 'faq_category' );
+    if ( !empty($qa_catname) ) {
+		$qa_category = get_term_by( 'slug', $qa_catname, 'faq_category' );
 	   	
 	    if ( in_the_loop() && "qa_faqs" != get_post_type() ) {
 	    	$homelink =  '<a href="' . home_url() . '/' . $qaplus_options['faq_slug'] . '">' . $post->post_title . '</a>';
-	    	$data = $homelink . __(' / ', 'qa_plus') . $category->name;
+	    	$data = $homelink . __(' / ', 'qa_plus') . $qa_category->name;
 	   	} 
 	} 
 

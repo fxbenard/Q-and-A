@@ -1,12 +1,12 @@
 === Q and A  ===
-Author: Raygun
+Author: daltonrooney
 Author URL: http://madebyraygun.com
 Plugin URL: http://wordpress.org/extend/plugins/q-and-a/
 Requires at least: 3.0
 Tested up to: 3.4.1
 Stable tag: 1.0
 
-Create a flexible, searchable FAQ & knowledge base on your WordPress site.
+Create a powerful and easy to use FAQ & knowledge base on your WordPress site.
 
 == Description ==
 
@@ -30,7 +30,7 @@ The default options should work for most sites, so let&#8217;s create a few FAQs
 
 Add your FAQ like you would any normal WordPress post. Once you&#8217;ve added some FAQs, visit your site and take a look. The FAQ homepage will be at yoursite.com/faqs by default, or wherever you set the FAQs homepage slug in the plugin settings.
 
-Take a look at the options on the "Plugin Settings" tab and try them out. You can add a search box on the FAQ homepage, category pages, and control the position of the search box. You can also customimze the animations and other aspects of the FAQ show/hide behavior. Each option has a small question mark like this next to it. <span class="vtip" title="This is a contextual tooltip. Hover over these to find out what a particular setting does.">?</span>Hover over this mark for a tooltip with more information about that option.
+Take a look at the options on the "Plugin Settings" tab and try them out. You can add a search box on the FAQ homepage, category pages, and control the position of the search box. You can also customimze the animations and other aspects of the FAQ show/hide behavior. Each option has a small question mark next to it. Hover over this mark for a tooltip with more information about that option.
 
 ###The [qa] shortcode###
 
@@ -73,7 +73,6 @@ You may need to refresh your permalinks. From the WP Dashboard, visit "Settings-
 For the fastest support, use our [forum](http://madebyraygun.com/support/).
 
 == Screenshots ==
-
 
 1. The FAQ homepage.
 

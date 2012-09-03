@@ -8,7 +8,7 @@
 
 <h3 id="general">Introduction</h3>	
 
-<p>Q &amp; A makes it easy to create a full-featured, fully searchable FAQ knowledgebase on your WordPress site. You can add an unlimited number of entries, grouped by category, and enable user submissions and ratings.</p>
+<p>Q &amp; A makes it easy to create a full-featured, fully searchable FAQ knowledgebase on your WordPress site. You can add an unlimited number of entries, grouped by category.</p>
 
 <p>To get started, click on the <strong>Q &amp; A Plus</strong> section of the <strong>Settings</strong> menu of your WordPress Dashboard. The first thing you&#8217;ll want to do is create an FAQ homepage, this is where visitors will be able to view your FAQs. This can be a page that already exists, or the plugin can automatically create the page and add the shortcode for you. By default, the FAQ homepage is &#8220;faqs&#8221;, so if that works for you, go ahead and click the &#8220;Create Page&#8221; button to add a new page to your site.</p>
 
