@@ -219,7 +219,7 @@ function update_page_title($data){
 
 	$qa_catname = (get_query_var('category_name'));
     
-    if ( !empty($qa_catname) ) {
+    if ( !empty($qa_catname) && !is_archive() ) {
 		$qa_category = get_term_by( 'slug', $qa_catname, 'faq_category' );
 	   	
 	    if ( in_the_loop() && "qa_faqs" != get_post_type() ) {

@@ -4,7 +4,7 @@ Author URL: http://madebyraygun.com
 Plugin URL: http://wordpress.org/extend/plugins/q-and-a/
 Requires at least: 3.0
 Tested up to: 3.4.1
-Stable tag: 1.0
+Stable tag: 1.0.2
 
 Create a powerful and easy to use FAQ & knowledge base on your WordPress site.
 
@@ -89,6 +89,11 @@ For the fastest support, use our [forum](http://madebyraygun.com/support/).
 Version 1.0 is an all new plugin. Your FAQs will be be preserved, but you may need to visit the settings page and walk through the plugin setup again. 
 
 == Changelog ==
+
+
+= 1.0.2 =
+
+* Post titles were being rewritten on category pages.
 
 = 1.0.1 =
 
