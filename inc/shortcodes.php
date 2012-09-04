@@ -9,8 +9,7 @@ function qahome_shortcode( $atts ) {
 	global $qaplus_options, $catname;
 	$catname = (get_query_var('category_name'));
 	
-	STATIC $i;
-	$i = 1;
+	STATIC $i = 0;
 
 	$qaplus_shortcode_output = '';
 	
@@ -138,6 +137,10 @@ function qahome_shortcode( $atts ) {
 		$qaplus_shortcode_output .= '">
 		';
 
+		$qaplus_shortcode_output .=  '<div class="qa-category">
+			<h2 class="faq-catname">' . $category->name . '</h2>
+			';	
+
 		$args = array(
 			'order'         => 'ASC',
 			'orderby' 		=> 'menu_order',
@@ -154,7 +157,7 @@ function qahome_shortcode( $atts ) {
 			global $post;
 			$qaplus_shortcode_output .= '<div id="qa-faq' . $i . '" class="qa-faq">
 			';
-			$qaplus_shortcode_output .= '<h2 class="qa-faq-title"><a class="qa-faq-anchor" href="' . get_permalink() . '">'. get_the_title().'</a></h2>
+			$qaplus_shortcode_output .= '<h3 class="qa-faq-title"><a class="qa-faq-anchor" href="' . get_permalink() . '">'. get_the_title().'</a></h3>
 			';
 
 			$qaplus_shortcode_output .= '<div class="qa-faq-answer">' . apply_filters( 'the_content', get_the_content() );

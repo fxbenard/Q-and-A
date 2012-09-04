@@ -90,6 +90,12 @@ Version 1.0 is an all new plugin. Your FAQs will be be preserved, but you may ne
 
 == Changelog ==
 
+= 1.0.1 =
+
+* Fixed problem with FAQs that wouldn't open when multiple categories were on the same page.
+
+* Returned missing category headers on single category entries.
+
 1.0 
 
 * All new version of Q & A with a better FAQ homepage and support for FAQ excerpts, permalinks, better SEO support, nicer search, and more FAQ animation options.
