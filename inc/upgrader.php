@@ -8,10 +8,10 @@ $qaplus_admin = get_option( 'qaplus_admin_options' );
 if ( ! $qaplus_options) { // Create the defaults for a new installation
 
 	$qaplus_options['faq_slug'] = 'faqs';
-	$qaplus_options['limit'] = '5';
+	$qaplus_options['limit'] = '-1';
 	$qaplus_options['columns'] = '2';
 	$qaplus_options['postnumber'] = 'true';	
-	$qaplus_options['excerpts'] = 'true';
+	$qaplus_options['excerpts'] = 'false';
 	$qaplus_options['search'] = 'home';
 	$qaplus_options['searchpos'] = 'top';
 	$qaplus_options['submissions'] = 'false';
