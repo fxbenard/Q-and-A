@@ -213,7 +213,9 @@ add_filter( 'get_the_excerpt', 'qaplus_custom_excerpt_more' );
 
 /* Filter page titles on the FAQ category pages */
 
-add_filter('the_title','update_page_title');
+/* Disabling this filter for now because too many people are having trouble with it*/
+
+//add_filter('the_title','update_page_title');
 function update_page_title($data){
     global $post, $qaplus_options;
 
