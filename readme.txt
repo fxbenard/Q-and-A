@@ -4,7 +4,7 @@ Author URL: http://madebyraygun.com
 Plugin URL: http://wordpress.org/extend/plugins/q-and-a/
 Requires at least: 3.0
 Tested up to: 3.4.1
-Stable tag: 1.0.2
+Stable tag: 1.0.4
 
 Create a powerful and easy to use FAQ & knowledge base on your WordPress site.
 
@@ -90,6 +90,19 @@ Version 1.0 is an all new plugin. Your FAQs will be be preserved, but you may ne
 
 == Changelog ==
 
+= 1.0.4 =
+
+* Fixed duplicate ID in searchbox
+
+* Fixed missing closing div in single category shortcode
+
+* Changed defaults to show full text instead of excerpts and remove limits on number of returned posts.
+
+* Fixed a couple of validation errors.
+
+= 1.0.3 =
+
+* Disabling post title filter for now.
 
 = 1.0.2 =
 
