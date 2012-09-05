@@ -76,7 +76,7 @@ function qahome_shortcode( $atts ) {
 			global $post;
 			$qaplus_shortcode_output .= '<div id="qa-faq' . $i . '" class="qa-faq">
 			';
-			$qaplus_shortcode_output .= '<h2 class="qa-faq-title"><a class="qa-faq-anchor" href="' . get_permalink() . '">'. get_the_title().'</a></h2>
+			$qaplus_shortcode_output .= '<h3 class="qa-faq-title"><a class="qa-faq-anchor" href="' . get_permalink() . '">'. get_the_title().'</a></h3>
 			';
 
 			$qaplus_shortcode_output .= '<div class="qa-faq-answer">' . apply_filters( 'the_content', get_the_content() );
@@ -89,15 +89,15 @@ function qahome_shortcode( $atts ) {
 
 			if ( $permalinks == "true" ) $qaplus_shortcode_output .= '</p>';
 
-			$qaplus_shortcode_output .= '</div>
-			</div>
+			$qaplus_shortcode_output .= '</div><!--.qa-faq-answer
+			</div><!--.qa-faq-->
 			';
 
 		$i++;	
 
 		endwhile; // end loop
 
-		$qaplus_shortcode_output .= '</div>';
+		$qaplus_shortcode_output .= '</div><!--.qa-faqs -->';
 
 		wp_reset_postdata();
 
@@ -168,15 +168,16 @@ function qahome_shortcode( $atts ) {
 
 			if ( $permalinks == "true" ) $qaplus_shortcode_output .= '</p>';
 
-			$qaplus_shortcode_output .= '</div>
-			</div>
+			$qaplus_shortcode_output .= '</div><!--.qa-faq-answer-->
+				</div><!--.qa-faq-->
 			';
 
 		$i++;	
 
 		endwhile; // end loop
 
-		$qaplus_shortcode_output .= '</div>';
+		$qaplus_shortcode_output .= '</div><!--.qa-category-->
+		</div><!--.qa-faqs -->';
 
 		wp_reset_postdata();
 		if ( $searchpos == "bottom" ) { 
@@ -282,8 +283,8 @@ function qahome_shortcode( $atts ) {
 
 					if ( $permalinks == "true" ) $qaplus_shortcode_output .= '</p>';
 
-					$qaplus_shortcode_output .= '</div>
-					</div>
+					$qaplus_shortcode_output .= '</div><!--.qa-faq-answer-->
+						</div><!--.qa-faq-->
 					';
 
 					$i++;
@@ -299,7 +300,7 @@ function qahome_shortcode( $atts ) {
 
 			}
 						
-			$qaplus_shortcode_output .= '</div>';
+			$qaplus_shortcode_output .= '</div><!--.qa-faqs -->';
 
 			if ( $searchpos == "bottom" ) { 
 				if ( $search == "home" || $search == "both" ) $qaplus_shortcode_output .= qa_search();
@@ -371,15 +372,15 @@ function qahome_shortcode( $atts ) {
 
 				if ( $permalinks == "true" ) $qaplus_shortcode_output .= '</p>';
 
-				$qaplus_shortcode_output .= '</div>
-				</div>
+				$qaplus_shortcode_output .= '</div><!--.qa-faq-answer-->
+				</div><!--.qa-faq-->
 				';
 
 				$i++;
 	
 			endwhile; // end loop
 				
-			$qaplus_shortcode_output .= '</div>';
+		$qaplus_shortcode_output .= '</div><!--.qa-faqs -->';
 
 			if ( $searchpos == "bottom" ) { 
 				if ( $search == "home" || $search == "both" ) $qaplus_shortcode_output .= qa_search();
