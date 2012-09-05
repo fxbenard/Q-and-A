@@ -399,11 +399,11 @@ function qahome_shortcode( $atts ) {
 function qa_search() { 
 	global $qaplus_options;
 
-    $searchform = '<p><form role="search" method="get" id="qaplus_searchform" action="<?php echo site_url();?>">
-		<input type="text" value="" placeholder="' . __('Search FAQs', 'qa-plus') . '" name="s" id="s" class="qaplus_search" />
+    $searchform = '<form role="search" method="get" id="qaplus_searchform" action="' . site_url() . '">
+		<input type="text" value="" placeholder="' . __('Search FAQs', 'qa-plus') . '" name="s" id="qasearch" class="qaplus_search" />
 		<input type="hidden" name="search_link" id="qa_search_link" value="' . site_url() . '/' . $qaplus_options['faq_slug'] . '/search/"/>
 		<input type="submit" id="qaplus_searchsubmit" value="Search" />
-		</form></p>';
+		</form>';
 
 	return $searchform;
 }
