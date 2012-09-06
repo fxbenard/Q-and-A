@@ -173,6 +173,14 @@ function q_a_plus_admin_init(){
 	);
 
 	add_settings_field(
+		'q_a_plus_catlink',
+		__( 'Show category links <span class="vtip" title="Show links to the single category page below each category. Works well in conjunction with the limit setting to condense your FAQ homepage.">?</span>', 'qa_plus' ),
+		'q_a_plus_catlink_input',
+		'q_a_plus',
+		'q_a_plus_homepage_settings'
+	);
+
+	add_settings_field(
 		'q_a_plus_postnumber',
 		__( 'Show number of entries <span class="vtip" title="Show total number of FAQ entries in the category header.">?</span>', 'qa_plus' ),
 		'q_a_plus_postnumber_input',
@@ -282,6 +290,12 @@ function q_a_plus_limit_input() {
 	<input name="qaplus_options[limit]" type="text" size="5" value="<?php echo $qaplus_options['limit'];?>" />
 <?php }
 
+function q_a_plus_catlink_input() {
+	$qaplus_options = get_option( 'qaplus_options' ); ?>
+	
+	<input type="checkbox" name="qaplus_options[catlink]" value="true" <?php checked( "true", $qaplus_options['catlink'] ); ?> />
+<?php }
+
 function q_a_plus_postnumber_input() {
 	$qaplus_options = get_option( 'qaplus_options' ); ?>
 	
@@ -380,6 +394,10 @@ function q_a_plus_validate_options( $input ) {
 	if ( ! isset( $input['postnumber'] ) )
 		$input['postnumber'] = null;
 	$input['postnumber'] = ( $input['postnumber'] == "true" ? "true" : "false" );
+
+	if ( ! isset( $input['catlink'] ) )
+		$input['catlink'] = null;
+	$input['catlink'] = ( $input['catlink'] == "true" ? "true" : "false" );
 
 	if ( ! isset( $input['breadcrumbs'] ) )
 		$input['breadcrumbs'] = null;

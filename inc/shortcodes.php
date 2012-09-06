@@ -19,6 +19,7 @@ function qahome_shortcode( $atts ) {
 		'limit' => $qaplus_options['limit'],
 		'search' => $qaplus_options['search'],
 		'searchpos' => $qaplus_options['searchpos'],
+		'catlink' => $qaplus_options['catlink'],
 		'postnumber' => $qaplus_options['postnumber'],
 		'excerpts' => $qaplus_options['excerpts'],
 		'permalinks' => $qaplus_options['permalinks'],
@@ -261,7 +262,6 @@ function qahome_shortcode( $atts ) {
 				}
 						
 				$qa_faqs = new WP_Query( $args );
-				$qa_count = $category->category_count;
 				
 				while( $qa_faqs->have_posts() ): $qa_faqs->the_post();
 					
@@ -291,7 +291,7 @@ function qahome_shortcode( $atts ) {
 		
 				endwhile; // end loop
 				
-				if ( $qa_count > $limit ) {
+				if ( $catlink == "true" ) {
 					$url =  home_url() . '/' . $qaplus_options['faq_slug'] . '/category/' . $category->category_nicename;
 					$qaplus_shortcode_output .= '<a class="qa-show-more" href="' . $url . '">' . __( 'View category&rarr;', 'qa-plus' ) . '</a>';	
 				}

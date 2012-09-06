@@ -16,6 +16,7 @@ if ( ! $qaplus_options) { // Create the defaults for a new installation
 	$qaplus_options['searchpos'] = 'top';
 	$qaplus_options['submissions'] = 'false';
 	$qaplus_options['catdesc'] = 'false';
+	$qaplus_options['catlink'] = 'false';
 	$qaplus_options['expandall'] = 'none';
 	$qaplus_options['ratings'] = 'true';
 	$qaplus_options['open'] = 'none';
@@ -54,7 +55,11 @@ if ( ! $qaplus_options) { // Create the defaults for a new installation
 
 } else {  /* Installation already exists, install updates */
 	
+	if ( $qaplus_options['version'] < '1.0.5' ) { //added a new option in 1.0.5
+		$qaplus_options['catlink'] = "false"; 
 		$qaplus_options['breadcrumbs'] = "false"; 
+	}
+
 	$qaplus_options['version'] = Q_A_PLUS_VERSION;
 	update_option( 'qaplus_options', $qaplus_options );
 }
