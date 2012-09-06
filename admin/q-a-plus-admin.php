@@ -134,6 +134,13 @@ function q_a_plus_admin_init(){
 		'q_a_plus_section_text',
 		'q_a_plus'
 	);
+
+	add_settings_section(
+		'q_a_plus_single_settings',
+		'Single FAQ Options',
+		'q_a_plus_section_text',
+		'q_a_plus'
+	);
 	
 	add_settings_section(
 		'q_a_plus_general_settings',
@@ -179,6 +186,15 @@ function q_a_plus_admin_init(){
 		'q_a_plus_excerpt_input',
 		'q_a_plus',
 		'q_a_plus_homepage_settings'
+	);
+
+
+	add_settings_field(
+		'q_a_plus_breadcrumbs',
+		__( 'Show breadcrumbs <span class="vtip" title="Enables a link back to the FAQ homepage in the page title. This can cause problems in some themes so check to make sure it\'s working.">?</span>', 'qa_plus' ),
+		'q_a_plus_breadcrumbs_input',
+		'q_a_plus',
+		'q_a_plus_single_settings'
 	);
 
 	add_settings_field(
@@ -278,6 +294,12 @@ function q_a_plus_excerpt_input() {
 	<input type="checkbox" name="qaplus_options[excerpts]" value="true" <?php checked( "true", $qaplus_options['excerpts'] ); ?> />
 <?php }
 
+function q_a_plus_breadcrumbs_input() {
+	$qaplus_options = get_option( 'qaplus_options' ); ?>
+	
+	<input type="checkbox" name="qaplus_options[breadcrumbs]" value="true" <?php checked( "true", $qaplus_options['breadcrumbs'] ); ?> />
+<?php }
+
 function q_a_plus_search_input() {
 	$qaplus_options = get_option( 'qaplus_options' );?>
 
@@ -358,6 +380,10 @@ function q_a_plus_validate_options( $input ) {
 	if ( ! isset( $input['postnumber'] ) )
 		$input['postnumber'] = null;
 	$input['postnumber'] = ( $input['postnumber'] == "true" ? "true" : "false" );
+
+	if ( ! isset( $input['breadcrumbs'] ) )
+		$input['breadcrumbs'] = null;
+	$input['breadcrumbs'] = ( $input['breadcrumbs'] == "true" ? "true" : "false" );
 
 	if ( ! isset( $input['excerpt'] ) )
 		$input['excerpt'] = null;

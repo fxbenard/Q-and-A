@@ -213,22 +213,12 @@ add_filter( 'get_the_excerpt', 'qaplus_custom_excerpt_more' );
 
 /* Filter page titles on the FAQ category pages */
 
-/* Disabling this filter for now because too many people are having trouble with it*/
+if ( $qaplus_options['breadcrumbs'] == "true" ) {
+	add_filter('the_title','update_page_title');
+}
 
-//add_filter('the_title','update_page_title');
 function update_page_title($data){
     global $post, $qaplus_options;
-
-	$qa_catname = (get_query_var('category_name'));
-    
-    if ( !empty($qa_catname) && !is_archive() ) {
-		$qa_category = get_term_by( 'slug', $qa_catname, 'faq_category' );
-	   	
-	    if ( in_the_loop() && "qa_faqs" != get_post_type() ) {
-	    	$homelink =  '<a href="' . home_url() . '/' . $qaplus_options['faq_slug'] . '">' . $post->post_title . '</a>';
-	    	$data = $homelink . __(' / ', 'qa_plus') . $qa_category->name;
-	   	} 
-	} 
 
 	if ( is_single() && in_the_loop() && "qa_faqs" == get_post_type() ) {
 		$homeID = url_to_postid($qaplus_options['faq_slug']);

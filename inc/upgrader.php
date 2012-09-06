@@ -21,6 +21,7 @@ if ( ! $qaplus_options) { // Create the defaults for a new installation
 	$qaplus_options['open'] = 'none';
 	$qaplus_options['sort'] = 'rating';
 	$qaplus_options['permalinks'] = 'true';
+	$qaplus_options['breadcrumbs'] = 'false';
 	$qaplus_options['collapsible'] = 'true';
 	$qaplus_options['accordion'] = 'true';	
 	$qaplus_options['animation'] = 'reveal';
@@ -53,6 +54,7 @@ if ( ! $qaplus_options) { // Create the defaults for a new installation
 
 } else {  /* Installation already exists, install updates */
 	
+		$qaplus_options['breadcrumbs'] = "false"; 
 	$qaplus_options['version'] = Q_A_PLUS_VERSION;
 	update_option( 'qaplus_options', $qaplus_options );
 }
