@@ -4,7 +4,7 @@ Author URL: http://madebyraygun.com
 Plugin URL: http://wordpress.org/extend/plugins/q-and-a/
 Requires at least: 3.0
 Tested up to: 3.4.1
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 
 Create a powerful and easy to use FAQ & knowledge base on your WordPress site.
 
@@ -12,7 +12,7 @@ Create a powerful and easy to use FAQ & knowledge base on your WordPress site.
 
 Create, categorize, and reorder FAQs and insert them into a page with a simple shortcode. Questions are shown/hidden with a simple jQuery animation; users without javascript enabled will click through to the single question page. Uses the native Custom Post Type functionality in WordPress 3.0. and above.
 
-Version 1.0 is <strong>all new<strong> and includes a better FAQ homepage with support for FAQ excerpts, permalinks, better SEO support, nicer search, and more FAQ animation options. 
+Version 1.0 is <strong>all new</strong> and includes a better FAQ homepage with support for FAQ excerpts, permalinks, better SEO support, nicer search, and more FAQ animation options. 
 
 Need more features? Try <a href="http://madebyraygun.com/wordpress/plugins/q-and-a-plus/">Q & A Plus</a>, our premium version of the plugin. The premium version includes more homepage display options, user ratings and submissions, more FAQ visibility options, and guaranteed support in our [forum](http://madebyraygun.com/support/). 
 
@@ -90,6 +90,22 @@ Version 1.0 is an all new plugin. Your FAQs will be be preserved, but you may ne
 
 == Changelog ==
 
+= 1.0.5 = 
+
+* Changed some javascript functions for better compatibility with older versions of jQuery
+
+* Better formatting for searchbox
+
+* Changed defaults for permalinks, show/hide behavior
+
+* Made "Show category" link optional
+
+* Added in option for breadcrumbs in single FAQ titles
+
+* Cleaned up some CSS
+
+
+
 = 1.0.4 =
 
 * Fixed duplicate ID in searchbox
@@ -118,73 +134,4 @@ Version 1.0 is an all new plugin. Your FAQs will be be preserved, but you may ne
 
 * All new version of Q & A with a better FAQ homepage and support for FAQ excerpts, permalinks, better SEO support, nicer search, and more FAQ animation options.
 
-0.2.8
-
-* Properly filter the FAQ content, which preserves formatting and allows shortcodes to be entered in the FAQ entry.
-
-0.2.7 
-
-* Fix for undefined variable qa_shortcode
-
-* Workaround for themes that try to limit number of FAQs returned.
-
-0.2.6
-
-* Properly enqueue styles to they can be deregistered.
-
-* Support for custom WP-CONTENT directories
-
-0.2.5
-
-* Added support for revisions of faq posts
-
-* Updated colums displayed on main faq page
-
-* Added ability to filter by category on main faq page
-
-* Added ability to filter by category on reorder page
-
-* Category is shown in each line item on the reorder page
-
-0.2.4
-
-* Added support for Qtranslate plugin.
-
-0.2.3
-
-* Changed method of shortcode content filtering for more compatibility.
-
-0.2.2
-
-* Plugin now filters the FAQ content for other shortcodes (such as captions & audio players)
-
-0.2.1 
-
-* Fixed small bug in search shortcode that resulted in no results under some configurations.
-
-0.2.0
-
-* Including WordPress version of jQuery instead of Google CDN version to limit SSL errors.
-
-
-* Changed categories to hierarchical for clarity.
-
-* Added shortcode for search form that can be added anywhere on your site.
-
-
-= 0.1.3 = 
-
-* You can now grab single FAQs by ID and insert them into a page.
-
-= 0.1.2 =
-
-* Changed permalinks to FAQs to a more compatible format in case javascript is disabled.
-
-= 0.1.1 =
-
-* Added category titles to displayed FAQs
-
-= 0.1 =
-
-* First version
 
