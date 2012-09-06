@@ -266,3 +266,19 @@ function qa_add_categories() {
 		}
 	}
 	
+	return $qa_tax_output;
+}	
+
+function add_categories_to_single ($content) {
+	global $post;
+	$faq_cats = qa_add_categories();
+	if ( is_single() && 'qa_faqs' == get_post_type($post) && !empty( $faq_cats ) ) {
+		$qa_cats = '<p class="qa_cats">' . __('Posted in: ', 'qa_plus') . $faq_cats . '</a>';
+		$content = $content . $qa_cats;
+		return $content;
+	} else {
+		return $content;
+	}
+}
+
+add_filter( 'the_content', 'add_categories_to_single' );
