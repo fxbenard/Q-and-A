@@ -38,5 +38,7 @@
 	margin: 10px 0 0;
 }
 
-	display: inline-block; 
+.qaplus_search {
+	width: 50%;
+	margin: 0 10px 20px 0;
 }
