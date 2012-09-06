@@ -21,8 +21,8 @@ if ( ! $qaplus_options) { // Create the defaults for a new installation
 	$qaplus_options['ratings'] = 'true';
 	$qaplus_options['open'] = 'none';
 	$qaplus_options['sort'] = 'rating';
-	$qaplus_options['permalinks'] = 'true';
 	$qaplus_options['breadcrumbs'] = 'false';
+	$qaplus_options['permalinks'] = 'false';
 	$qaplus_options['collapsible'] = 'true';
 	$qaplus_options['accordion'] = 'true';	
 	$qaplus_options['animation'] = 'reveal';
