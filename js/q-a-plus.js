@@ -7,7 +7,7 @@ jQuery(document).ready(function($) {
 		
 		if ( faqContainer.is('.collapsible') ) {
 
-			faq.find('.qa-faq-anchor').on("click", function() {
+			faq.find('.qa-faq-anchor').bind("click", function() {
 				if ( faqContainer.is('.accordion') ) {
 					$('.qa-faq-answer').not('#qa-faq' + num + ' .qa-faq-answer').hide();
 				}
@@ -22,7 +22,7 @@ jQuery(document).ready(function($) {
 				return false;
 			});
 		
-			$('.expand-all.expand').on("click", function() {
+			$('.expand-all.expand').bind("click", function() {
 				$('.expand-all.expand').hide();
 				$('.expand-all.collapse').show();
 				if ( faqContainer.is('.animation-fade') ) {
@@ -34,7 +34,7 @@ jQuery(document).ready(function($) {
 				}	
 			});
 
-			$('.expand-all.collapse').on("click", function() {
+			$('.expand-all.collapse').bind("click", function() {
 				$('.expand-all.collapse').hide();
 				$('.expand-all.expand').show();
 				if ( faqContainer.is('.animation-fade') ) {
@@ -49,7 +49,7 @@ jQuery(document).ready(function($) {
 		}
 	});
 
-	$('.qasubmission').on("click", function() {
+	$('.qasubmission').bind("click", function() {
 		$('#postbox').fadeToggle();
 	});
 	
