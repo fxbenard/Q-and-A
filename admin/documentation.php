@@ -26,7 +26,7 @@
 
 <p><strong>FAQ homepage</strong>: <code>[qa]</code> Will insert the entire FAQ homepage anywhere on your site.</p>
 
-<p><strong>Single category page</strong>: <code>[qa category=dogs]</code> By specifying a category slug, you can add an entire category of FAQ entries anywhere on your site. You can find the category slug on the <strong>FAQs &rarr; FAQ Categories</strong> page.</p>
+<p><strong>Single category page</strong>: <code>[qa cat=dogs]</code> By specifying a category slug, you can add an entire category of FAQ entries anywhere on your site. You can find the category slug on the <strong>FAQs &rarr; FAQ Categories</strong> page.</p>
 
 <p><strong>Single FAQ page</strong>: <code>[qa id=123]</code> By specifying an ID, you can insert an individual FAQ entry anywhere on your site.</p>
 
