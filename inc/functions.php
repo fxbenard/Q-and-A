@@ -237,3 +237,32 @@ function update_page_title($data){
 
 	return $data;
 }
+
+/* Add category links to single FAQ entries */
+
+function qa_add_categories() {
+
+	global $qaplus_options, $post;
+	$id = $post->ID;
+	
+	$i = 1;
+	$qa_tax_output = '';
+	
+	$terms = get_the_terms( $id, 'faq_category' );
+	$count = count( $terms );
+	
+	if ( $terms ) {
+			
+		foreach( $terms as $term ) {
+			$qa_tax_output .= '<a href=" ' . home_url() . '/' . $qaplus_options['faq_slug'] . '/category/' . $term->slug . '/">';
+			$qa_tax_output .= $term->name;
+			$qa_tax_output .= '</a>';
+			if ( $i != $count ) {
+				$qa_tax_output .= ', ';
+			}	
+			
+			unset($term);
+			$i++;
+		}
+	}
+	
