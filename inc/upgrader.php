@@ -25,7 +25,7 @@ if ( ! $qaplus_options) { // Create the defaults for a new installation
 	$qaplus_options['permalinks'] = 'false';
 	$qaplus_options['collapsible'] = 'true';
 	$qaplus_options['accordion'] = 'true';	
-	$qaplus_options['animation'] = 'reveal';
+	$qaplus_options['animation'] = 'fade';
 	$qaplus_options['version'] = Q_A_PLUS_VERSION;
 	$qaplus_options['license'] = '';
 	$qaplus_options['jquery'] = 'wp';
