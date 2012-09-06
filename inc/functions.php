@@ -86,8 +86,8 @@ add_action( 'wp_head', 'qaplus_head' );
 if ( ! function_exists( 'qaplus_head' ) ) {
 	function qaplus_head() {
 		global $qaplus_options;
-		echo '<!-- Q and A Plus -->
-		<noscript><link rel="stylesheet" type="text/css" href="' .  plugins_url( "css/q-a-plus-noscript.css?ver=" . $qaplus_options['version'], dirname(__FILE__) ) . '" /></noscript>';
+		echo '<!-- Q & A -->
+		<noscript><link rel="stylesheet" type="text/css" href="' .  plugins_url( "css/q-a-plus-noscript.css?ver=" . $qaplus_options['version'], dirname(__FILE__) ) . '" /></noscript><!-- Q & A -->';
 	} // end qaplus_head 
 }
 
