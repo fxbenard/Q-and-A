@@ -90,7 +90,7 @@ function qahome_shortcode( $atts ) {
 
 			if ( $permalinks == "true" ) $qaplus_shortcode_output .= '</p>';
 
-			$qaplus_shortcode_output .= '</div><!--.qa-faq-answer
+			$qaplus_shortcode_output .= '</div><!--.qa-faq-answer-->
 			</div><!--.qa-faq-->
 			';
 
