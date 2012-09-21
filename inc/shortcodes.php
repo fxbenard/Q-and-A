@@ -16,25 +16,25 @@ function qahome_shortcode( $atts ) {
 	extract(shortcode_atts(array(
 		'id' => '',
 		'cat' => '',
-		'limit' => $qaplus_options['limit'],
-		'search' => $qaplus_options['search'],
-		'searchpos' => $qaplus_options['searchpos'],
-		'catlink' => $qaplus_options['catlink'],
-		'postnumber' => $qaplus_options['postnumber'],
-		'excerpts' => $qaplus_options['excerpts'],
-		'permalinks' => $qaplus_options['permalinks'],
+		'limit' 		=> $qaplus_options['limit'],
+		'search' 		=> $qaplus_options['search'],
+		'searchpos' 	=> $qaplus_options['searchpos'],
+		'catlink' 	=> $qaplus_options['catlink'],
+		'postnumber'	=> $qaplus_options['postnumber'],
+		'excerpts' 	=> $qaplus_options['excerpts'],
+		'permalinks' 	=> $qaplus_options['permalinks'],
 		'accordion'	=> $qaplus_options['accordion'],
 		'collapsible'	=> $qaplus_options['collapsible'],
-		'sort' => 'menu_order',
-		'animation' => $qaplus_options['animation'],
-		'exclude' => '',
-		'orderby' => 'name',
+		'sort' 		=> 'menu_order',
+		'animation' 	=> $qaplus_options['animation'],
+		'exclude' 	=> '',
+		'orderby' 	=> 'name',
 	), $atts));
 	
 	$args = array(
-		'orderby' => $orderby,
-		'exclude' => $exclude,
-		'taxonomy' => 'faq_category',
+		'orderby' 	=> $orderby,
+		'exclude' 	=> $exclude,
+		'taxonomy' 	=> 'faq_category',
 	);
 	
 	if ( $id ) { // Show a single entry //
@@ -65,9 +65,9 @@ function qahome_shortcode( $atts ) {
 		
 		$args = array(
 			'p'	=> $id,
-			'post_type'     => 'qa_faqs',
-			'post_status'   => 'publish',
-			'posts_per_page' => 1,
+			'post_type'     	=> 'qa_faqs',
+			'post_status'   	=> 'publish',
+			'posts_per_page'	=> 1,
 		);
 				
 		$qa_faqs = new WP_Query( $args );
@@ -86,11 +86,11 @@ function qahome_shortcode( $atts ) {
 				$qaplus_shortcode_output .= '<p class="qa-faq-meta qa-post-like">';
 			}
 
-			if ( $permalinks == "true" ) $qaplus_shortcode_output .= '<a class="qa-permalink" href="' . get_permalink() . '">' . __( 'Permalink' , 'qa-free') . '.</a>';
+			if ( $permalinks == "true" ) $qaplus_shortcode_output .= '<a class="qa-permalink" href="' . get_permalink() . '">' . __( 'Permalink' , 'qa-plus' ) . '.</a>';
 
 			if ( $permalinks == "true" ) $qaplus_shortcode_output .= '</p>';
 
-			$qaplus_shortcode_output .= '</div><!--.qa-faq-answer-->
+			$qaplus_shortcode_output .= '</div><!--.qa-faq-answer
 			</div><!--.qa-faq-->
 			';
 
@@ -143,11 +143,11 @@ function qahome_shortcode( $atts ) {
 			';	
 
 		$args = array(
-			'order'         => 'ASC',
+			'order'         	=> 'ASC',
 			'orderby' 		=> 'menu_order',
-			'post_type'     => 'qa_faqs',
-			'post_status'   => 'publish',
-			'posts_per_page' => -1,
+			'post_type'     	=> 'qa_faqs',
+			'post_status'   	=> 'publish',
+			'posts_per_page' 	=> -1,
 			'faq_category'	=> $category->slug
 		);
 				
@@ -165,7 +165,7 @@ function qahome_shortcode( $atts ) {
 			
 			if ( $permalinks == "true" ) $qaplus_shortcode_output .= '<p class="qa-faq-meta qa-post-like">';
 
-			if ( $permalinks == "true" ) $qaplus_shortcode_output .= '<a class="qa-permalink" href="' . get_permalink() . '">' . __( 'Permalink' , 'qa-free') . '.</a>';
+			if ( $permalinks == "true" ) $qaplus_shortcode_output .= '<a class="qa-permalink" href="' . get_permalink() . '">' . __( 'Permalink' , 'qa-plus') . '.</a>';
 
 			if ( $permalinks == "true" ) $qaplus_shortcode_output .= '</p>';
 
@@ -190,8 +190,8 @@ function qahome_shortcode( $atts ) {
 	else { // Show the Q&A Homepage //
 		
 		$args = array(
-			'orderby'	=> 'term_order',
-			'order'	=> 'ASC',
+			'orderby'		=> 'term_order',
+			'order'		=> 'ASC',
 			'taxonomy'	=> 'faq_category'
 		);
 
@@ -242,21 +242,21 @@ function qahome_shortcode( $atts ) {
 				
 				if ( $sort == 'menu_order' ) {
 					$args = array(
-						'order'         => 'ASC',
+						'order'			=> 'ASC',
 						'orderby' 		=> 'menu_order',
-						'post_type'     => 'qa_faqs',
-						'post_status'   => 'publish',
-						'posts_per_page' => $limit,
+						'post_type'     	=> 'qa_faqs',
+						'post_status'   	=> 'publish',
+						'posts_per_page' 	=> $limit,
 						'faq_category'	=> $category->slug
 					);
 				} else {
 					$args = array(
-						'meta_key'	=> 'votes_count',
-						'order'         => 'DESC',
+						'meta_key'		=> 'votes_count',
+						'order'         	=> 'DESC',
 						'orderby' 		=> 'meta_value_num',
-						'post_type'     => 'qa_faqs',
-						'post_status'   => 'publish',
-						'posts_per_page' => $limit,
+						'post_type'     	=> 'qa_faqs',
+						'post_status'   	=> 'publish',
+						'posts_per_page' 	=> $limit,
 						'faq_category'	=> $category->slug
 					);
 				}
@@ -268,7 +268,7 @@ function qahome_shortcode( $atts ) {
 					global $post;
 					$qaplus_shortcode_output .= '<div id="qa-faq' . $i . '" class="qa-faq cf">
 					';
-					$qaplus_shortcode_output .= '<h3 class="qa-faq-title"><a class="qa-faq-anchor" href="' . get_permalink() . '">'. get_the_title().'</a></h3>
+					$qaplus_shortcode_output .= '<h3 class="qa-faq-title"><a class="qa-faq-anchor" href="' . get_permalink() . '">'. get_the_title() . '</a></h3>
 					';
 					
 					if ( $excerpts == "true" ) {
@@ -279,7 +279,7 @@ function qahome_shortcode( $atts ) {
 
 					if ( $permalinks == "true" ) $qaplus_shortcode_output .= '<p class="qa-faq-meta qa-post-like">';
 
-					if ( $permalinks == "true" ) $qaplus_shortcode_output .= '<a class="qa-permalink" href="' . get_permalink() . '">' . __( 'Permalink' , 'qa-free') . '.</a>';
+					if ( $permalinks == "true" ) $qaplus_shortcode_output .= '<a class="qa-permalink" href="' . get_permalink() . '">' . __( 'Permalink' , 'qa-plus') . '.</a>';
 
 					if ( $permalinks == "true" ) $qaplus_shortcode_output .= '</p>';
 
@@ -293,7 +293,7 @@ function qahome_shortcode( $atts ) {
 				
 				if ( $catlink == "true" ) {
 					$url =  home_url() . '/' . $qaplus_options['faq_slug'] . '/category/' . $category->category_nicename;
-					$qaplus_shortcode_output .= '<a class="qa-show-more" href="' . $url . '">' . __( 'View category&rarr;', 'qa-free' ) . '</a>';	
+					$qaplus_shortcode_output .= '<a class="qa-show-more" href="' . $url . '">' . __( 'View category&rarr;', 'qa-plus' ) . '</a>';	
 				}
 				
 				$qaplus_shortcode_output .= '</div><!-- .qa-category-->';
@@ -343,11 +343,11 @@ function qahome_shortcode( $atts ) {
 
 
 			$args = array(
-				'order'         => 'ASC',
+				'order'         	=> 'ASC',
 				'orderby' 		=> 'menu_order',
-				'post_type'     => 'qa_faqs',
-				'post_status'   => 'publish',
-				'posts_per_page' => -1,
+				'post_type'     	=> 'qa_faqs',
+				'post_status'   	=> 'publish',
+				'posts_per_page' 	=> -1,
 			);
 
 			$qa_faqs = new WP_Query( $args );
@@ -368,7 +368,7 @@ function qahome_shortcode( $atts ) {
 
 				if ( $permalinks == "true" ) $qaplus_shortcode_output .= '<p class="qa-faq-meta qa-post-like">';
 
-				if ( $permalinks == "true" ) $qaplus_shortcode_output .= '<a class="qa-permalink" href="' . get_permalink() . '">' . __( 'Permalink' , 'qa-free') . '.</a>';
+				if ( $permalinks == "true" ) $qaplus_shortcode_output .= '<a class="qa-permalink" href="' . get_permalink() . '">' . __( 'Permalink' , 'qa-plus') . '.</a>';
 
 				if ( $permalinks == "true" ) $qaplus_shortcode_output .= '</p>';
 
@@ -401,9 +401,9 @@ function qa_search() {
 	global $qaplus_options;
 
     $searchform = '<form role="search" method="get" id="qaplus_searchform" action="' . site_url() . '">
-		<input type="text" value="" placeholder="' . __('Search FAQs', 'qa-free') . '" name="s" id="qasearch" class="qaplus_search" />
+		<input type="text" value="" placeholder="' . __( 'Search FAQs', 'qa-free' ) . '" name="s" id="qasearch" class="qaplus_search" />
 		<input type="hidden" name="search_link" id="qa_search_link" value="' . site_url() . '/' . $qaplus_options['faq_slug'] . '/search/"/>
-		<input type="submit" id="qaplus_searchsubmit" value="Search" />
+		<input type="submit" id="qaplus_searchsubmit" value="Chercher" />
 		</form>';
 
 	return $searchform;

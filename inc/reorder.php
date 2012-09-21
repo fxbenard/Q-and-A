@@ -2,9 +2,9 @@
 
 function faqpageorder_menu()
 {    
-	add_submenu_page( 'edit.php?post_type=qa_faqs', __('Reorder FAQs', 'qa-free'), __('Reorder FAQs', 'qa-free'), 'manage_options', 'faqpageorder', 'faqpageorder' ); 
+	add_submenu_page( 'edit.php?post_type=qa_faqs', __('Reorder FAQs','qa-free'), __('Reorder FAQs','qa-free'), 'manage_options', 'faqpageorder', 'faqpageorder' ); 
 
-	//add_pages_page(__('Reorder FAQs', 'faqpageorder'), __('Reorder FAQs', 'faqpageorder'), 'edit_pages', 'faqpageorder', 'faqpageorder');
+	//add_pages_page(__('Reorder FAQs', 'qa-free'), __('Reorder FAQs', 'qa-free'), 'edit_pages', 'faqpageorder', 'faqpageorder');
 }
 
 function faqpageorder_js_libs() {
@@ -16,9 +16,9 @@ function faqpageorder_js_libs() {
 }
 
 function faqpageorder_set_plugin_meta($links, $file) {
-	$plugin = plugin_basename(__FILE__);
+	$plugin = plugin_basename( __FILE__ );
 	// create link
-	if ($file == $plugin) {
+	if ( $file == $plugin ) {
 		return array_merge( $links, array( 
 			'<a href="' . faqpageorder_getTarget() . '">' . __('Reorder FAQs', 'qa-free') . '</a>'
 		));
@@ -26,29 +26,29 @@ function faqpageorder_set_plugin_meta($links, $file) {
 	return $links;
 }
 
-add_filter('plugin_row_meta', 'faqpageorder_set_plugin_meta', 10, 2 );
-add_action('admin_menu', 'faqpageorder_menu');
-add_action('admin_print_scripts', 'faqpageorder_js_libs');
+add_filter( 'plugin_row_meta', 'faqpageorder_set_plugin_meta', 10, 2 );
+add_action( 'admin_menu', 'faqpageorder_menu' );
+add_action( 'admin_print_scripts', 'faqpageorder_js_libs' );
 
 function faqpageorder()
 {
 global $wpdb;
 $parentID = 0;
 
-if (isset($_POST['btnSubPages'])) { 
+if (isset($_POST['btnSubPages']) ) { 
 	$parentID = $_POST['pages'];
 }
-elseif (isset($_POST['hdnParentID'])) { 
+elseif (isset($_POST['hdnParentID']) ) { 
 	$parentID = $_POST['hdnParentID'];
 }
 
-if (isset($_POST['btnReturnParent'])) { 
+if (isset($_POST['btnReturnParent']) ) { 
 	$parentsParent = $wpdb->get_row("SELECT post_parent FROM $wpdb->posts WHERE ID = " . $_POST['hdnParentID'], ARRAY_N);
 	$parentID = $parentsParent[0];
 }
 
-if(isset($_GET['hideNote'])) {
-	update_option('faqpageorder_hideNote', '1');
+if(isset($_GET['hideNote']) ) {
+	update_option( 'faqpageorder_hideNote', '1' );
 }
 
 $success = "";
@@ -56,11 +56,11 @@ if (isset($_POST['btnOrderPages'])) {
 	$success = faqpageorder_updateOrder();
 }
 
-$subPageStr = faqpageorder_getSubPages($parentID);
+$subPageStr = faqpageorder_getSubPages( $parentID );
 ?>
 
 <div class='wrap'>
-<h2><?php _e('Reorder FAQs', 'qa-free'); ?></h2>
+<h2><?php _e( 'Reorder FAQs', 'qa-free' ) ?></h2>
 <form action="edit.php" method="get" >
 	 <?php 
 		$tax_slug = 'faq_category';
@@ -73,7 +73,7 @@ $subPageStr = faqpageorder_getSubPages($parentID);
 
 		// output html for taxonomy dropdown filter
 		echo "<select name='$tax_slug' id='$tax_slug' class='postform'>";
-		echo "<option value=''>" . printf(__('Show All %1$s', 'qa-free'), $tax_name) . "</option>";
+		echo "<option value=''>Show All $tax_name</option>";
 		foreach ($terms as $term) {
 			// output each select option line, check against the last $_GET to show the current option selected
 			echo '<option value='. $term->term_id, $_GET[$tax_slug] == $term->term_id ? ' selected="selected"' : '','>' . $term->name .' (' . $term->count .')</option>';
@@ -93,7 +93,7 @@ $subPageStr = faqpageorder_getSubPages($parentID);
             'hide_empty'      =>  true, // Don't show businesses w/o listings
         ));*/ ?>
 		<input type="hidden" name="post_type" value="qa_faqs" />
-		<input type="hidden" name="page" value="faqpageorder" />
+		<input type="hidden" name="page" value="qa-free" />
 		<input type="submit" />
 </form>	
 <form name="frmfaqpageorder" method="post" action="">
@@ -106,39 +106,40 @@ $subPageStr = faqpageorder_getSubPages($parentID);
  	if($subPageStr != "") 
 	{ ?>
 	
-	<h3><?php _e('Order Subpages', 'qa-free'); ?></h3>
+	<h3><?php _e( 'Order Subpages', 'qa-free' ) ?></h3>
 	<select id="pages" name="pages">
 		<?php echo $subPageStr; ?>
 	</select>
-	&nbsp;<input type="submit" name="btnSubPages" class="button" id="btnSubPages" value="<?php _e('Order Subpages', 'qa-free'); ?>" />
+	&nbsp;<input type="submit" name="btnSubPages" class="button" id="btnSubPages" value="<?php _e( 'Order Subpages', 'qa-free' ) ?>" />
 	<?php 
 	} 
 	?>
 
-	<h3><?php _e('Reorder FAQs', 'qa-free'); ?></h3>
+	<h3><?php _e( 'Reorder FAQs', 'qa-free' ) ?></h3>
 	
 	<ul id="faqpageorderList">
 	<?php
-	$results = faqpageorder_pageQuery($parentID);
+	$results = faqpageorder_pageQuery( $parentID );
 	foreach($results as $row){
-		$productcategories = (array) wp_get_object_terms($row->ID, 'faq_category', array('fields' => 'names'));
-		if(count($productcategories) == 0) $productcategories[0] = __('No Category Selected', 'qa-free');
-		$productcategories_id = (array) wp_get_object_terms($row->ID, 'faq_category', array('fields' => 'ids'));
+		$productcategories = (array) wp_get_object_terms( $row->ID, 'faq_category', array( 'fields' => 'names' ) );
+		if(count($productcategories) == 0) $productcategories[0] = "No Category Selected";
+		$productcategories_id = (array) wp_get_object_terms( $row->ID, 'faq_category', array( 'fields' => 'ids' ) );
 		
 		if( empty($_GET['faq_category']) || in_array($_GET['faq_category'],$productcategories_id)){
-		echo "<li id='id_$row->ID' class='lineitem'>".__($row->post_title)." <span style='float:right'>| ".implode(', ',$productcategories)."</span></li>";
+		echo "<li id='id_$row->ID' class='lineitem'>" . __( $row->post_title ). " <span style='float:right'>| ". implode( ', ',$productcategories )."</span></li>";
 		}
 	}	
 	?>
 	</ul>
 
-	<input type="submit" name="btnOrderPages" id="btnOrderPages" class="button-primary" value="<?php _e('Click to Reorder FAQs', 'qa-free'); ?>" onclick="javascript:orderPages(); return true;" />
+	<input type="submit" name="btnOrderPages" id="btnOrderPages" class="button-primary" value="<?php _e( 'Click to Reorder FAQs', 'qa-free' ) ?>" onclick="javascript:orderPages(); return true;" />
 	<?php echo faqpageorder_getParentLink($parentID); ?>
 	&nbsp;&nbsp;<strong id="updateText"></strong>
 	<br /><br />
 	<input type="hidden" id="hdnfaqpageorder" name="hdnfaqpageorder" />
 	<input type="hidden" id="hdnParentID" name="hdnParentID" value="<?php echo $parentID; ?>" />
-	<p><?php _e('This feature is part of the <a href="http://geekyweekly.com/mypageorder">My Page Order</a> plugin by Andrew Charlton.', 'qa-free'); ?></p>
+	<?php echo'<p>'.sprintf(__( 'This feature is part of the <a href="%s">My Page Order</a> plugin by Andrew Charlton.','qa-free' ),'http://geekyweekly.com/mypageorder" target="_blank') . '</p>' ;?>
+	
 	
 </form>
 </div>
@@ -194,7 +195,7 @@ $subPageStr = faqpageorder_getSubPages($parentID);
 	addLoadEvent(faqpageorderaddloadevent);
 	
 	function orderPages() {
-		jQuery("#updateText").html("<?php _e('Updating FAQ Order...', 'qa-free'); ?>");
+		jQuery("#updateText").html("<?php _e( 'Updating FAQ Order...', 'qa-free') ?>");
 		jQuery("#hdnfaqpageorder").val(jQuery("#faqpageorderList").sortable("toArray"));
 	}
 
@@ -206,7 +207,7 @@ $subPageStr = faqpageorder_getSubPages($parentID);
 //Switch page target depending on version
 function faqpageorder_getTarget() {
 	global $wp_version;
-	if (version_compare($wp_version, "2.999", ">"))
+	if (version_compare( $wp_version, "2.999", ">" ))
 		return "edit.php?post_type=page&page=faqpageorder";
 	else
 		return "edit-pages.php?page=faqpageorder";
@@ -227,10 +228,10 @@ function faqpageorder_updateOrder()
 			$wpdb->query("UPDATE $wpdb->posts SET menu_order = '$i' WHERE id ='$str'");
 		}
 
-		return '<div id="message" class="updated fade"><p>'. __('FAQ order updated successfully.', 'qa-free').'</p></div>';
+		return '<div id="message" class="updated fade"><p>'. __( 'FAQ order updated successfully.', 'qa-free' ).'</p></div>';
 	}
 	else
-		return '<div id="message" class="updated fade"><p>'. __('An error occured, order has not been saved.', 'qa-free').'</p></div>';
+		return '<div id="message" class="updated fade"><p>' . __( 'An error occured, order has not been saved.', 'qa-free' ). '</p></div>';
 }
 
 function faqpageorder_getSubPages($parentID)
@@ -257,16 +258,17 @@ function faqpageorder_pageQuery($parentID)
 function faqpageorder_getParentLink($parentID)
 {
 	if($parentID != 0)
-		return "&nbsp;&nbsp;<input type='submit' class='button' id='btnReturnParent' name='btnReturnParent' value='" . __('Return to parent page', 'qa-free') ."' />";
+		return "&nbsp;&nbsp;<input type='submit' class='button' id='btnReturnParent' name='btnReturnParent' value='" . __( 'Return to parent page', 'qa-free' ) ."' />";
 	else
 		return "";
 }
 
+
 class faqpageorder_Widget extends WP_Widget {
 
 	function faqpageorder_Widget() {
-		$widget_ops = array('classname' => 'widget_faqpageorder', 'description' => __( 'Enhanced Pages widget provided by Reorder FAQs', 'qa-free') );
-		$this->WP_Widget('faqpageorder', __('Reorder FAQs', 'qa-free'), $widget_ops);	}
+		$widget_ops = array( 'classname' => 'widget_faqpageorder', 'description' => __( 'Enhanced Pages widget provided by Reorder FAQs', 'qa-free') );
+		$this->WP_Widget('faqpageorder', __( 'Reorder FAQs', 'qa-free' ), $widget_ops);	}
 
 	function widget( $args, $instance ) {
 		extract( $args );
@@ -308,9 +310,9 @@ class faqpageorder_Widget extends WP_Widget {
 					'authors' => $authors, 'number' => $number, 'offset' => $offset, 'show_home' => $show_home	) ) );
 		}
 
-		if ( !empty( $out ) ) {
+		if ( ! empty( $out ) ) {
 			echo $before_widget;
-			if ( $title)
+			if ( $title )
 				echo $before_title . $title . $after_title;
 		?>
 		<ul>
@@ -375,13 +377,13 @@ class faqpageorder_Widget extends WP_Widget {
 		$number = esc_attr( $instance['number'] );
 		$offset = esc_attr( $instance['offset'] );
 	?>
-		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'qa-free'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p>
+		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 'qa-free' ); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p>
 		
 		<p>
 			<label for="<?php echo $this->get_field_id('sortby'); ?>"><?php _e( 'Sort by:', 'qa-free' ); ?></label>
 			<select name="<?php echo $this->get_field_name('sortby'); ?>" id="<?php echo $this->get_field_id('sortby'); ?>" class="widefat">
-				<option value="menu_order"<?php selected( $instance['sortby'], 'menu_order' ); ?>><?php _e('FAQ Order', 'qa-free'); ?></option>
-				<option value="post_title"<?php selected( $instance['sortby'], 'post_title' ); ?>><?php _e('Page Title', 'qa-free'); ?></option>
+				<option value="menu_order"<?php selected( $instance['sortby'], 'menu_order' ); ?>><?php _e( 'FAQ Order', 'qa-free' ); ?></option>
+				<option value="post_title"<?php selected( $instance['sortby'], 'post_title' ); ?>><?php _e( 'Page Title', 'qa-free' ); ?></option>
 				<option value="post_date"<?php selected( $instance['sortby'], 'post_date' ); ?>><?php _e( 'Post Date', 'qa-free' ); ?></option>
 				<option value="post_modified"<?php selected( $instance['sortby'], 'post_modified' ); ?>><?php _e( 'Post Modified', 'qa-free' ); ?></option>
 				<option value="post_author"<?php selected( $instance['sortby'], 'post_author' ); ?>><?php _e( 'Author', 'qa-free' ); ?></option>
@@ -392,8 +394,8 @@ class faqpageorder_Widget extends WP_Widget {
 		<p>
 			<label for="<?php echo $this->get_field_id('sort_order'); ?>"><?php _e( 'Sort Order:', 'qa-free' ); ?></label>
 			<select name="<?php echo $this->get_field_name('sort_order'); ?>" id="<?php echo $this->get_field_id('sort_order'); ?>" class="widefat">
-				<option value="asc"<?php selected( $instance['sort_order'], 'asc' ); ?>><?php _e('Ascending', 'qa-free'); ?></option>
-				<option value="desc"<?php selected( $instance['sort_order'], 'desc' ); ?>><?php _e('Descending', 'qa-free'); ?></option>
+				<option value="asc"<?php selected( $instance['sort_order'], 'asc' ); ?>><?php _e( 'Ascending', 'qa-free' ); ?></option>
+				<option value="desc"<?php selected( $instance['sort_order'], 'desc' ); ?>><?php _e( 'Descending', 'qa-free' ); ?></option>
 			</select>
 			<br />
 			<small><?php _e( 'Might only work with Page Title.', 'qa-free' ); ?></small>
@@ -451,7 +453,7 @@ class faqpageorder_Widget extends WP_Widget {
 		<p>
 			<label for="<?php echo $this->get_field_id('link_before'); ?>"><?php _e( 'Link Before:', 'qa-free' ); ?></label> <input type="text" value="<?php echo $link_before; ?>" name="<?php echo $this->get_field_name('link_before'); ?>" id="<?php echo $this->get_field_id('link_before'); ?>" class="widefat" />
 			<br />
-			<small><?php _e( 'Text or HTML to proceed link text.', 'faqpageorder' ); ?></small>
+			<small><?php _e( 'Text or HTML to proceed link text.', 'qa-free' ); ?></small>
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id('link_after'); ?>"><?php _e( 'Link After:', 'qa-free' ); ?></label> <input type="text" value="<?php echo $link_after; ?>" name="<?php echo $this->get_field_name('link_after'); ?>" id="<?php echo $this->get_field_id('link_after'); ?>" class="widefat" />
@@ -461,7 +463,7 @@ class faqpageorder_Widget extends WP_Widget {
 		<p>
 			<label for="<?php echo $this->get_field_id('authors'); ?>"><?php _e( 'Authors:', 'qa-free' ); ?></label> <input type="text" value="<?php echo $authors; ?>" name="<?php echo $this->get_field_name('authors'); ?>" id="<?php echo $this->get_field_id('authors'); ?>" class="widefat" />
 			<br />
-			<small><?php _e( 'Author IDs, seperated by comma.', 'qa-free' ); ?></small>
+			<small><?php _e( 'Author IDs, separated by comma.', 'qa-free' ); ?></small>
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id('number'); ?>"><?php _e( 'Number:', 'qa-free' ); ?></label> <input type="text" value="<?php echo $number; ?>" name="<?php echo $this->get_field_name('number'); ?>" id="<?php echo $this->get_field_id('number'); ?>" class="widefat" />
