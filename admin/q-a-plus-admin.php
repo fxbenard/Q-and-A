@@ -41,7 +41,7 @@ function qaplus_admin_scripts() {
 }
 
 if ( isset( $_GET['page'] ) && $_GET['page'] == "qaplus" ) {
-	add_action('init', 'qaplus_admin_scripts');
+	add_action( 'init', 'qaplus_admin_scripts' );
 }
 
 // Draw the option page
@@ -68,8 +68,8 @@ if ( isset($_GET['settings-updated']) ) {
 	<div class="wrap">
 
 	<div class="updated fade" style="max-width: 780px; margin: 18px 0 0 18px">
-    <p style="line-height: 1.4em;"><?php echo sprintf( __( 'Thanks for downloading Q & A! If you like it, please be sure to give us a positive rating in the <a href="%s">WordPress repository</a>, it means a lot to us.', 'qa-free'),'http://wordpress.org/extend/plugins/q-and-a/'); ?></p>
-  	<p style="line-height: 1.4em;"><?php echo sprintf(__('If you like Q & A and would like more advanced features, please take a look at <strong><a href="%1$s">Q & A Plus</a></strong>, our premium version of the plugin. It\'s got more display options, support for user submissions, user ratings, and even more options to explore.', 'qa-free' ),'http://madebyraygun.com/wordpress/plugins/q-and-a-plus') ;?></p>
+    <p style="line-height: 1.4em;"><?php echo sprintf( __( 'Thanks for downloading Q & A! If you like it, please be sure to give us a positive rating in the <a href="%s">WordPress repository</a>, it means a lot to us.', 'qa-free' ),'http://wordpress.org/extend/plugins/q-and-a/' ); ?></p>
+  	<p style="line-height: 1.4em;"><?php echo sprintf(__( 'If you like Q & A and would like more advanced features, please take a look at <strong><a href="%1$s">Q & A Plus</a></strong>, our premium version of the plugin. It\'s got more display options, support for user submissions, user ratings, and even more options to explore.', 'qa-free' ),'http://madebyraygun.com/wordpress/plugins/q-and-a-plus' ) ;?></p>
   </div>
 
 	<div id="tabs">
@@ -130,42 +130,42 @@ function q_a_plus_admin_init(){
 	
 	add_settings_section(
 		'q_a_plus_homepage_settings',
-		__( 'FAQ Homepage Options', 'qa-plus' ),
+		__( 'FAQ Homepage Options', 'qa-free' ),
 		'q_a_plus_section_text',
 		'q_a_plus'
 	);
 	
 	add_settings_section(
 		'q_a_plus_category_settings',
-		__( 'FAQ Category Page Options', 'qa-plus' ),
+		__( 'FAQ Category Page Options', 'qa-free' ),
 		'q_a_plus_section_text',
 		'q_a_plus'
 	);
 
 	add_settings_section(
 		'q_a_plus_single_settings',
-		__( 'Single FAQ Options', 'qa-plus' ),
+		__( 'Single FAQ Options', 'qa-free' ),
 		'q_a_plus_section_text',
 		'q_a_plus'
 	);
 
 	add_settings_section(
 		'q_a_plus_general_settings',
-		__( 'Global Options', 'qa-plus' ),
+		__( 'Global Options', 'qa-free' ),
 		'q_a_plus_section_text',
 		'q_a_plus'
 	);
 
 	add_settings_section(
 		'q_a_plus_advanced_settings',
-		__( 'Advanced Options', 'qa-plus' ),
+		__( 'Advanced Options', 'qa-free' ),
 		'q_a_plus_section_text',
 		'q_a_plus'
 	);
 			
 	add_settings_field(
 		'q_a_plus_slug',
-		__( 'FAQ homepage <span class="vtip" title="Where would you like your FAQ homepage to live? This can be a page that already exists on your site, but it shouldn\'t be the front page.">?</span>', 'qa-plus' ),
+		__( 'FAQ homepage <span class="vtip" title="Where would you like your FAQ homepage to live? This can be a page that already exists on your site, but it shouldn\'t be the front page.">?</span>', 'qa-free' ),
 		'q_a_plus_slug_input',
 		'q_a_plus',
 		'q_a_plus_homepage_settings'
@@ -173,7 +173,7 @@ function q_a_plus_admin_init(){
 	
 	add_settings_field(
 		'q_a_plus_limit',
-		__( 'FAQs per category <span class="vtip" title="How many items should we show in each category on the Q & A homepage? -1 shows all FAQ entries. Users will be able to click a link to see all questions on the category page.">?</span>', 'qa-plus' ),
+		__( 'FAQs per category <span class="vtip" title="How many items should we show in each category on the Q & A homepage? -1 shows all FAQ entries. Users will be able to click a link to see all questions on the category page.">?</span>', 'qa-free' ),
 		'q_a_plus_limit_input',
 		'q_a_plus',
 		'q_a_plus_homepage_settings'
@@ -181,7 +181,7 @@ function q_a_plus_admin_init(){
 
 	add_settings_field(
 		'q_a_plus_catlink',
-		__( 'Show category links <span class="vtip" title="Show links to the single category page below each category. Works well in conjunction with the limit setting to condense your FAQ homepage.">?</span>', 'qa-plus' ),
+		__( 'Show category links <span class="vtip" title="Show links to the single category page below each category. Works well in conjunction with the limit setting to condense your FAQ homepage.">?</span>', 'qa-free' ),
 		'q_a_plus_catlink_input',
 		'q_a_plus',
 		'q_a_plus_homepage_settings'
@@ -189,7 +189,7 @@ function q_a_plus_admin_init(){
 	
 	add_settings_field(
 		'q_a_plus_columns',
-		__( 'Use two-column layout <span class="vtip" title="Enable the two-column layout on the FAQ homepage."">?</span>', 'qa-plus' ),
+		__( 'Use two-column layout <span class="vtip" title="Enable the two-column layout on the FAQ homepage."">?</span>', 'qa-free' ),
 		'q_a_plus_column_input',
 		'q_a_plus',
 		'q_a_plus_homepage_settings'
@@ -197,7 +197,7 @@ function q_a_plus_admin_init(){
 
 	add_settings_field(
 		'q_a_plus_postnumber',
-		__( 'Show number of entries <span class="vtip" title="Show total number of FAQ entries in the category header.">?</span>', 'qa-plus' ),
+		__( 'Show number of entries <span class="vtip" title="Show total number of FAQ entries in the category header.">?</span>', 'qa-free' ),
 		'q_a_plus_postnumber_input',
 		'q_a_plus',
 		'q_a_plus_homepage_settings'
@@ -205,7 +205,7 @@ function q_a_plus_admin_init(){
 
 	add_settings_field(
 		'q_a_plus_excerpts',
-		__( 'Show excerpts <span class="vtip" title="Show excerpts instead of full entries on the FAQ homepage.">?</span>', 'qa-plus' ),
+		__( 'Show excerpts <span class="vtip" title="Show excerpts instead of full entries on the FAQ homepage.">?</span>', 'qa-free' ),
 		'q_a_plus_excerpt_input',
 		'q_a_plus',
 		'q_a_plus_homepage_settings'
@@ -213,7 +213,7 @@ function q_a_plus_admin_init(){
 
 	add_settings_field(
 		'q_a_plus_category_description',
-		__( 'Show category descriptions <span class="vtip" title="Shows a category description below the title on the category pages.">?</span>', 'qa-plus' ),
+		__( 'Show category descriptions <span class="vtip" title="Shows a category description below the title on the category pages.">?</span>', 'qa-free' ),
 		'q_a_plus_category_description_input',
 		'q_a_plus',
 		'q_a_plus_category_settings'
@@ -221,7 +221,7 @@ function q_a_plus_admin_init(){
 
 	add_settings_field(
 		'q_a_plus_breadcrumbs',
-		__( 'Show breadcrumbs <span class="vtip" title="Enables a link back to the FAQ homepage in the page title. This can cause problems in some themes so check to make sure it\'s working.">?</span>', 'qa-plus' ),
+		__( 'Show breadcrumbs <span class="vtip" title="Enables a link back to the FAQ homepage in the page title. This can cause problems in some themes so check to make sure it\'s working.">?</span>', 'qa-free' ),
 		'q_a_plus_breadcrumbs_input',
 		'q_a_plus',
 		'q_a_plus_single_settings'
@@ -229,7 +229,7 @@ function q_a_plus_admin_init(){
 
 	add_settings_field(
 		'q_a_plus_search',
-		__( 'Show search <span class="vtip" title="Show the search form on the home and category pages.">?</span>', 'qa-plus' ),
+		__( 'Show search <span class="vtip" title="Show the search form on the home and category pages.">?</span>', 'qa-free' ),
 		'q_a_plus_search_input',
 		'q_a_plus',
 		'q_a_plus_general_settings'
@@ -237,7 +237,7 @@ function q_a_plus_admin_init(){
 
 	add_settings_field(
 		'q_a_plus_search_position',
-		__( 'Search box position <span class="vtip" title="Add the search box before or after the FAQ content.">?</span>', 'qa-plus' ),
+		__( 'Search box position <span class="vtip" title="Add the search box before or after the FAQ content.">?</span>', 'qa-free' ),
 		'q_a_plus_search_position_input',
 		'q_a_plus',
 		'q_a_plus_general_settings'
@@ -245,7 +245,7 @@ function q_a_plus_admin_init(){
 
 	add_settings_field(
 		'q_a_plus_submissions',
-		__( 'Enable user submissions <span class="vtip" title="This will allow users to submit their own questions for you to review and publish.">?</span>', 'qa-plus' ),
+		__( 'Enable user submissions <span class="vtip" title="This will allow users to submit their own questions for you to review and publish.">?</span>', 'qa-free' ),
 		'q_a_plus_submissions_input',
 		'q_a_plus',
 		'q_a_plus_general_settings'
@@ -253,7 +253,7 @@ function q_a_plus_admin_init(){
 
 	add_settings_field(
 		'q_a_plus_sort',
-		__( 'Sort FAQs <span class="vtip" title="You can control the order that FAQs are displayed. If you want to sort by rating, make sure that ratings are enabled.">?</span>', 'qa-plus' ),
+		__( 'Sort FAQs <span class="vtip" title="You can control the order that FAQs are displayed. If you want to sort by rating, make sure that ratings are enabled.">?</span>', 'qa-free' ),
 		'q_a_plus_sort_input',
 		'q_a_plus',
 		'q_a_plus_general_settings'
@@ -261,7 +261,7 @@ function q_a_plus_admin_init(){
 
 	add_settings_field(
 		'q_a_plus_expand_all',
-		__( 'Show expand all link <span class="vtip" title="Allow the user to see all questions and answers at the same time.">?</span>', 'qa-plus' ),
+		__( 'Show expand all link <span class="vtip" title="Allow the user to see all questions and answers at the same time.">?</span>', 'qa-free' ),
 		'q_a_plus_expand_all_input',
 		'q_a_plus',
 		'q_a_plus_general_settings'
@@ -269,7 +269,7 @@ function q_a_plus_admin_init(){
 
 	add_settings_field(
 		'q_a_plus_ratings',
-		__( 'Enable user ratings <span class="vtip" title="This will allow users to vote for their favorite articles">?</span>', 'qa-plus' ),
+		__( 'Enable user ratings <span class="vtip" title="This will allow users to vote for their favorite articles">?</span>', 'qa-free' ),
 		'q_a_plus_ratings_input',
 		'q_a_plus',
 		'q_a_plus_general_settings'
@@ -277,7 +277,7 @@ function q_a_plus_admin_init(){
 
 	add_settings_field(
 		'q_a_plus_show_permalinks',
-		__( 'Show permalinks <span class="vtip" title="Add a permalink to each FAQ entry">?</span>', 'qa-plus' ),
+		__( 'Show permalinks <span class="vtip" title="Add a permalink to each FAQ entry">?</span>', 'qa-free' ),
 		'q_a_plus_show_permalinks_input',
 		'q_a_plus',
 		'q_a_plus_general_settings'
@@ -285,7 +285,7 @@ function q_a_plus_admin_init(){
 
 	add_settings_field(
 		'q_a_plus_animation_style',
-		__( 'Animation style <span class="vtip" title="What animation should be used to show/hide the FAQs?">?</span>', 'qa-plus' ),
+		__( 'Animation style <span class="vtip" title="What animation should be used to show/hide the FAQs?">?</span>', 'qa-free' ),
 		'q_a_plus_animation_style_input',
 		'q_a_plus',
 		'q_a_plus_general_settings'
@@ -293,7 +293,7 @@ function q_a_plus_admin_init(){
 
 	add_settings_field(
 		'q_a_plus_accordion',
-		__( 'Accordion behavior <span class="vtip" title="Clicking a FAQ title closes any other open FAQs.">?</span>', 'qa-plus' ),
+		__( 'Accordion behavior <span class="vtip" title="Clicking a FAQ title closes any other open FAQs.">?</span>', 'qa-free' ),
 		'q_a_plus_accordion_input',
 		'q_a_plus',
 		'q_a_plus_general_settings'
@@ -301,7 +301,7 @@ function q_a_plus_admin_init(){
 
 	add_settings_field(
 		'q_a_plus_collapsible',
-		__( 'Enable show/hide behavior <span class="vtip" title="Uncheck this to turn off the show/hide behavior.">?</span>', 'qa-plus' ),
+		__( 'Enable show/hide behavior <span class="vtip" title="Uncheck this to turn off the show/hide behavior.">?</span>', 'qa-free' ),
 		'q_a_plus_collapsible_input',
 		'q_a_plus',
 		'q_a_plus_general_settings'
@@ -309,7 +309,7 @@ function q_a_plus_admin_init(){
 
 	add_settings_field(
 		'q_a_plus_open_default',
-		__( 'FAQ visibility <span class="vtip" title="Do you want to show the contents of the FAQ when the page loads? The default is behavior is to hide the FAQs until the title is clicked.">?</span>', 'qa-plus' ),
+		__( 'FAQ visibility <span class="vtip" title="Do you want to show the contents of the FAQ when the page loads? The default is behavior is to hide the FAQs until the title is clicked.">?</span>', 'qa-free' ),
 		'q_a_plus_open_default_input',
 		'q_a_plus',
 		'q_a_plus_general_settings'
@@ -318,7 +318,7 @@ function q_a_plus_admin_init(){
 
 	add_settings_field(
 		'q_a_plus_license',
-		__( 'Email address <span class="vtip" title="The email address you used to purchase the plugin.">?</span>', 'qa-plus' ),
+		__( 'Email address <span class="vtip" title="The email address you used to purchase the plugin.">?</span>', 'qa-free' ),
 		'q_a_plus_license_input',
 		'q_a_plus',
 		'q_a_plus_advanced_settings'
@@ -326,7 +326,7 @@ function q_a_plus_admin_init(){
 
 	add_settings_field(
 		'q_a_plus_license_key',
-		__( 'License key <span class="vtip" title="The license key emailed to you when you purchased the plugin.">?</span>', 'qa-plus' ),
+		__( 'License key <span class="vtip" title="The license key emailed to you when you purchased the plugin.">?</span>', 'qa-free' ),
 		'q_a_plus_license_key_input',
 		'q_a_plus',
 		'q_a_plus_advanced_settings'
@@ -334,7 +334,7 @@ function q_a_plus_admin_init(){
 
 	add_settings_field(
 		'q_a_plus_jquery',
-		__( 'jQuery version <span class="vtip" title="Which version of jQuery should the plugin use? This can sometimes help with compatibility issues. You should leave this set to <em>WP Included</em> unless you have a specific reason to change it.">?</span>', 'qa-plus' ),
+		__( 'jQuery version <span class="vtip" title="Which version of jQuery should the plugin use? This can sometimes help with compatibility issues. You should leave this set to <em>WP Included</em> unless you have a specific reason to change it.">?</span>', 'qa-free' ),
 		'q_a_plus_jquery_input',
 		'q_a_plus',
 		'q_a_plus_advanced_settings'
@@ -342,7 +342,7 @@ function q_a_plus_admin_init(){
 		
 	add_settings_field(
 		'q_a_plus_version',
-		__( 'Version', 'qa-plus' ),
+		__( 'Version', 'qa-free' ),
 		'q_a_plus_version_input',
 		'q_a_plus',
 		'q_a_plus_advanced_settings'

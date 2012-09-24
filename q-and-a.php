@@ -47,7 +47,7 @@ if ( is_admin() ) {
 |--------------------------------------------------------------------------
 */
 
-function qa_plus_textdomain() {
+function qa_free_textdomain() {
 	load_plugin_textdomain( 'qa-free', false, dirname( plugin_basename( Q_A_PLUS_PLUGIN_FILE ) ) . '/lang/' );
 }
-add_action('init', 'qa_plus_textdomain');
+add_action('init', 'qa_free_textdomain');
