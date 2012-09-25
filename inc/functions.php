@@ -134,11 +134,11 @@ function addQaplusPage(){
 	$new_page = ucwords( $new_page );
 	// Create post object
 	$qaplus_post = array(
-		'post_title' => $new_page,
-	  'post_content' => '[qa]',
-	  'post_status' => 'publish',
-	  'post_type' => 'page',
-	  'post_author' => 1
+		'post_title'		=> $new_page,
+		'post_content'	=> '[qa]',
+		'post_status'		=> 'publish',
+		'post_type'		=> 'page',
+		'post_author'		=> 1
 	);
 	
 	// Insert the post into the database
@@ -146,9 +146,9 @@ function addQaplusPage(){
 	
 	$page_exists = get_page_by_path( $qaplus_options['faq_slug'] );
 	if ( $page_exists ) {
-		echo "<p>Page was successfully created!</p>";
+		'<p>' . _e( 'Page was successfully created!', 'qa-free' ); .'</p>'
 	} else {
-		echo "<p>Page could not be created. Please create it and add the shortcode manually.</p>";
+		 '<p>' . _e( 'Page could not be created. Please create it and add the shortcode manually.', 'qa-free' ); .'</p>'
 	}
 	die();
 }

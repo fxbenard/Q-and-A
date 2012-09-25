@@ -1,5 +1,5 @@
 <?php 
-add_action( 'init', 'create_qa_post_types', 200 );
+add_action( 'init', 'create_qa_post_types', 0 );
 function create_qa_post_types() {
 	 
 	 global $qaplus_options;
