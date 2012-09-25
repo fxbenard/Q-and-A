@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Q & A\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-24 17:21+0100\n"
-"PO-Revision-Date: 2012-09-24 17:26+0100\n"
+"POT-Creation-Date: 2012-09-25 09:26+0100\n"
+"PO-Revision-Date: 2012-09-25 09:28+0100\n"
 "Last-Translator: FxB <fx@fxbenard.com>\n"
 "Language-Team: FxB <fx@fxbenard.com>\n"
 "Language: fr_FR\n"
@@ -677,6 +677,17 @@ msgstr "Catégorie"
 #: inc/custom-post.php:80
 msgid "Date"
 msgstr "Date"
+
+#: inc/functions.php:149
+msgid "Page was successfully created!"
+msgstr "La page a été créé avec succès !"
+
+#: inc/functions.php:151
+msgid ""
+"Page could not be created. Please create it and add the shortcode manually."
+msgstr ""
+"La page n'a pas pu être crée. S'il vous plaît créer la et ajoutez y le "
+"raccourci manuellement."
 
 #: inc/functions.php:189
 msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
